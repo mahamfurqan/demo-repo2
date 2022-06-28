@@ -1,0 +1,191 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\begin{document}
+	\textbf{\underline{Getting Started}}
+	\begin{flushleft}
+		If you are an aspiring C++ programmer who plans to move from text-based games to real time games which also have graphics, then this book is a must-have for you. But to start off, it is important to not just know about SDL, but also set it up in the right manner in your computer. \\
+		
+		SDL stands for Simple Direct Media Layer, and it is a development library designed for various platforms. It is equipped with features like OpenGL and Direct3D that enable users to have low level access to audio, keyboard, mouse and other graphics hardware. \\
+		
+		The features of SDL are such that they can support several operating systems which include Windows, MacOS, Linux as well as mobile operating systems like Android and iOS. While SDL itself is written in the C language, it supports programs written in C++ as well as C and Python. \\
+		
+		SDL acts like an Application Programmer’s Interface that incorporates hardware features and tools that are specific to each operating system and uses them in a way that one can code in SDL and compile it according to the platform. \\.\\
+		
+		\textbf{File types}\\
+		
+		The first step in setting up a fully functional SDL application is the installation of the required header files, library files and binary files. The details of these files are as follows:\\
+		
+	\textbf{Header files}\\
+	
+		The header files come with an extension of “filename.h”. These files are necessary for the compiler to know what $ SDL_Init() $ and other SDL structures and functions mean. The compiler needs to be configured in such a way that it can look for the header files in an additional directory or you need to put the header files with the other header files that the compiler comes with. \\
+		\textbf{Library files} \\
+		
+		The library files come with an extension of “filename.lib”. There job comes in when the compilation is done by the compiler, and there is a need to link all source files together. Linking can only be done properly if the program knows the addresses of all functions of SDL. The addresses are located in the library file. The compiler needs to be configured in such a way that it can look for the library files in an additional directory or you need to put the library files with the other library files that the compiler comes with. It is also important to link against the library file in the linker.  \\
+		
+		
+		\textbf{Binary files}\\
+			
+		The binary files come with an extension of “filename.dll”. These come in handy when the program is compiled and linked. To successfully run a dynamically linked application, the library binaries are imported at runtime. Windows needs to be able to find the library binary when the program is run and these binary files should ideally be located either where the executable is, or where the rest of the system's library binary files.  \\
+		However, it is recommended to place the binary dll files in the system directory because of two reasons:
+		\\
+		\begin{flushleft}
+			$ 1. $ Windows can always find the library on the system so dynamically linked applications can be compiled and run anywhere on the system.\\
+			$ 2. $ A copy of the dll file need not be placed with every single development of an application.\\
+		\end{flushleft}
+		
+		\textbf{Setting up SDL in Windows}\\ 
+		.\\
+		\underline{Code::Blocks} \\
+		.\\
+		The first step for executing the setup of SDL 2 in Windows with the Code::Blocks IDE is the installation of SDL2 header files, library files and binary files. These files can be found on the \href{http://www.libsdl.org/download-2.0.php}{\underline{SDL website}}. For Code::Blocks, it is necessary to download the MinGW development libraries because Code::Blocks, by default, supports the MinGW compiler.\\
+		.\\
+		\begin{center}
+				\includegraphics[scale=0.5]{pic1.png}
+		\end{center}
+	
+		Unzip the folder and copy the contents of SDL2-2.0.22 --$ > $ i686-w64-mingw32.\\ This folder contains the 32 bit library and the contents of this folder should be moved to a dedicated folder in the C drive for the MinGW development files. \\.\\
+		
+		\begin{center}
+			\includegraphics[scale=0.5]{pic2.png}
+		\end{center}
+		
+		The next step would be to start Code::Blocks and create a new empty project, giving it whatever name you please.
+	 \begin{center}
+	 	\includegraphics[scale=0.5]{pic3.png}
+	 \end{center}
+	 Download the helloSDL.cpp file which is the C++ source file from \href{https://lazyfoo.net/tutorials/SDL/01_hello_SDL/01_hello_SDL.zip}{\underline{this folder}}.  \\.\\
+		Next, add this source file inside your project or copy and paste the contents of this file after creating an empty C++ file. \\.\\
+		\begin{center}
+			\includegraphics[scale=0.5]{pic4.png}
+		\end{center}
+		Right click the Project name and go to Project properties and under the Build Targets tab, specify the build type as Console Application. \\.\\
+		\begin{center}
+			\includegraphics[scale=0.5]{pic5.png}
+		\end{center}
+		Now attempt to run the application and read below to resolve any errors encountered. \\.\\
+		\textit{Possible errors}\\
+		.\\
+		As with any other configuration setup, errors may arise here as well. Some errors which users are likely to encounter while compiling and running the program are: \\
+		.\\
+		$ 1. $ 
+		\textbf{Cannot open include file: 'SDL.h': No such file or directory}\\
+		.\\
+		\textbf{Cause and Solution of this error:} \\ .\\
+		This error arises when Code::Blocks is unable to find the header files in the folder extracted. To resolve this, go to Project Properties --$ > $ Project's build options.
+		\begin{center}
+			\includegraphics[scale=0.5]{pic6.png}
+		\end{center} In the Search Directories tab, click Add and select the SDL2 folder inside the include directory from the folder extracted. A dialog box will open asking if you want it to be a relative path. CLick No and then click OK.\\.\\
+	\begin{center}
+		\includegraphics[scale=0.5]{pic7.png}
+	\end{center}
+		
+		
+		\textbf{$ 2. $ Can't find -lSDL2 or -lSDL2main} \\
+		.\\
+		
+		\textbf{Cause and Solution of this error:}\\.\\
+		This error arises when Code::Blocks is unable to search for library files in the SDL folder extracted. To resolve this, in the same Project build options window, go to the Linker tab and add the lib directory from the folder extracted to the Linker search directories by clicking Add.\\.\\
+		\begin{center}
+			\includegraphics[scale=0.5]{pic8.png}
+		\end{center}
+		
+		\textbf{$ 3. $ Undefined references} \\.\\
+		\textbf{Cause and Solution of this error:}\\.\\
+		
+		This error arises when the compiler is unable to link against the libraries. To resolve this, in the same Project build options window, go to the Linker settings tab and paste \textit{-lmingw32 -lSDL2main -lSDL2} into the other linker options field and click OK.\\.\\
+		\begin{center}
+			\includegraphics[scale=0.5]{pic9.png}
+		\end{center}
+		
+		
+		\textbf{$ 4. $ The code execution cannot proceed because SDL2.dll was not found.}\\.\\
+		\textbf{Cause and Solution of this error:}\\.\\
+		This error arises when the operating system is unable to find the SDL2.dll file. To resolve this, find the extracted folder and from the bin folder within it, copy the SDL2.dll file and paste it in the system folder. For 32 bit Windows, the system folder is SYSTEM32 and for 64 bit Windows, the system folder is SysWOW64.\\
+		.\\
+		\begin{center}
+			\includegraphics[scale=0.5]{pic10.png}
+		\end{center}
+		\underline{Microsoft Visual Studio 2019}\\
+		.\\
+				The first step for executing the setup of SDL 2 in Windows with the Microsoft Visual Studio 2019 IDE is the installation of SDL2 header files, library files and binary files. These files can be found on the \href{http://www.libsdl.org/download-2.0.php}{\underline{SDL website}}. For Visual Studio, it is necessary to download the Visual C++ development libraries.\\
+		.\\
+		\begin{center}
+			\includegraphics[scale=0.5]{pic1.png}
+		\end{center}
+		Once downloaded, unzip the folder and copy the contents of the folder by the name SDL2-2.0.22 in a separate folder in which all the other development content for Visual Studio is located. Or you can even make a new folder in the C drive by the name of VClibraries and dedicate it to such files and folders.\\
+		.\\
+		The next step would be to start Visual Studio and create a new C++ project with whichever name you please. 
+		\begin{center}
+			\includegraphics[scale=0.5]{pic12.png}
+		\end{center}
+		Download the helloSDL.cpp file which is the C++ source file from \href{https://lazyfoo.net/tutorials/SDL/01_hello_SDL/01_hello_SDL.zip}{\underline{this folder}}.  \\.\\
+		Next, add this downloaded source file after extracting it from the folder. It can be added in the Source Files folder in the Project directory. You should select Source Files --$ > $ Add --$ > $ and then --$ > $ Existing Item.\\
+		.\\
+		\begin{center}
+			\includegraphics[scale=0.5]{pic13.png}
+		\end{center}
+		 Lastly, change the build setting to Debug x64 if it's not already set like that. \\.\\
+		 \begin{center}
+		 	\includegraphics[scale=0.5]{pic14.png}
+		 \end{center}
+		
+		\textit{Possible errors}\\
+		.\\	
+		As with any other configuration setup, errors may arise here as well. Some errors which users are likely to encounter while building, compiling and running the program are: \\ .\\
+		$ 1. $ 
+		\textbf{Cannot open include file: 'SDL.h': No such file or directory}\\
+		.\\
+		\textbf{Cause and Solution of this error:} \\ .\\
+		This error arises because Visual Studio C++ is unable to find the header files for SDL2 hence there is a need to add the SDL include folder to the Visual Studio include directories. \\
+		To do this, right-click your project from the Explorer and go to Properties. \\
+		Then go to Configuration Properties --$ > $ VC++ Directories and choose the Edit option in the Include Directories tab. \\
+		\begin{center}
+			\includegraphics[scale=0.5]{pic15.png}
+		\end{center}
+		In the window that opens after doing the following, paste the absolute path of the include directory from the SDL development folder extracted after installation. Click OK thereafter. \\
+		\begin{center}
+			\includegraphics[scale=0.5]{pic16.png}
+		\end{center}
+		Once this is done, and given that no other errors are encountered, the program will compile and build successfully.\\.\\
+		
+		\textbf{$ 2. $ unresolved external symbol SDLGetError referenced in function SDLmain} \\
+		.\\
+		\textbf{Cause and Solution of this error:}\\.\\
+		This error arises because the compiler is not aware of the location of the SDL functions. To tell the compiler about the SDL functions, there is a need to link the library file so that the compiler can use it. \\
+		To do this, right click your project name from the Explorer and go to Properties. Then go to Configuration Properties --$ > $ Linker and choose the Edit option in the Additional Dependencies tab. \\
+		\begin{center}
+			\includegraphics[scale=0.5]{pic17.png}
+		\end{center}
+		In the window that opens after doing the following, paste this : \\ 
+		\textbf{SDL2.lib; SDL2main.lib;} \\
+		Click OK thereafter. \\
+		\begin{center}
+			\includegraphics[scale=0.5]{pic18.png}
+		\end{center}
+		.\\
+		\textbf{$ 3. $ cannot open file 'SDL2.lib'} \\.\\
+		\textbf{Cause and Solution of this error:}\\.\\
+		This error arises because the compiler doesn't know where to find the SDL library files hence there is a need to add the library directory file in a similar manner as the include directory file was added. 
+		To do this, again right click on the project name in the Explorer, go to Configuration Properties --$ > $ VC++ directories and choose the Edit option in the Library Directories. 
+		\begin{center}
+			\includegraphics[scale=0.5]{pic19.png}
+		\end{center}
+		Add the path of the lib directory and ensure to use the build configuration that matches the system you are using.\\ .\\
+		\begin{center}
+			\includegraphics[scale=0.5]{pic20.png}
+		\end{center}
+		\textbf{$ 4. $ The code execution cannot proceed because SDL2.dll was not found.}\\.\\
+		\textbf{Cause and Solution of this error:}\\.\\
+		This error arises because the program needs the dll file to run but it cannot find it. To resolve this, there is a need to edit the PATH environment variable. To do this, paste the SDL.dll file in the System directory and go to Windows settings. Search for environment variables and under System Variables, edit and browse to add the new lib directory for your specific build configuration. Once this is done, restart Visual Studio to provide the updated path variable.\\.\\
+		\begin{center}
+			\includegraphics[scale=0.5]{pic21.png}
+		\end{center}
+		\begin{center}
+		\includegraphics[scale=0.5]{pic22.png}
+	\end{center}
+		
+		
+	\end{flushleft}
+	
+\end{document}
